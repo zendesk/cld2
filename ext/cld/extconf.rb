@@ -1,4 +1,1 @@
-#require 'mkmf'
-#create_makefile('cld/cld')
-
-system "./configure --prefix=#{Dir.pwd}" unless File.exists?('Makefile')
+system "cmake . -DCMAKE_BUILD_TYPE=Release" unless File.exists?('Makefile')
