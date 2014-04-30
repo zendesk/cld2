@@ -3,6 +3,7 @@ require "ffi"
 
 module CLD
   extend FFI::Library
+  ffi_lib "#{File.expand_path("../../", __FILE__)}/ext/cld/lib/libcld2.so"
 
   def self.detect_language(text, is_plain_text=true)
     result = detect_language_ext(text.to_s, is_plain_text)
@@ -14,8 +15,6 @@ module CLD
   class ReturnValue < FFI::Struct
     layout :name, :string, :code, :string, :reliable, :bool
   end
-
-  GEM_ROOT = File.expand_path("../../", __FILE__)
-  ffi_lib "#{GEM_ROOT}/ext/cld/lib/cld.so"
-  attach_function "detect_language_ext","detectLanguageThunkInt", [:buffer_in, :bool], ReturnValue.by_value
+  
+  attach_function "detect_language_ext", "detectLanguageThunkInt", [:buffer_in, :bool], ReturnValue.by_value
 end
