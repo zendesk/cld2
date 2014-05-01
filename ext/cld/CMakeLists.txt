@@ -4,7 +4,7 @@ cmake_minimum_required (VERSION 2.6)
 
 set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Debug, Release" FORCE)
 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/build")
 
 if(UNIX)
   SET(CMAKE_C_FLAGS_RELEASE "-O3")
@@ -41,3 +41,5 @@ set(CLD2_SRCS
   "thunk.cc")
 
 add_library(cld2 MODULE ${CLD2_SRCS})
+
+install(TARGETS cld2 DESTINATION "${PROJECT_BINARY_DIR}/lib")

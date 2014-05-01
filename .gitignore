@@ -24,3 +24,5 @@ CMakeFiles
 Makefile
 ext/cld/lib
 *.log
+build/
+install_manifest.txt
