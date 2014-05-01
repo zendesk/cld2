@@ -18,6 +18,14 @@ describe CLD do
     it { subject[:code].should eq("fr") }
     it { subject[:reliable].should be_true }
   end
+
+  context "Italian text" do
+    subject { CLD.detect_language("sono tutti pazzi qui") }
+
+    it { subject[:name].should eq("ITALIAN") } 
+    it { subject[:code].should eq("it") }
+    it { subject[:reliable].should be_true }
+  end
   
   context "French in HTML - using CLD html " do
     subject { CLD.detect_language("<html><head><body><script>A large amount of english in the script which should be ignored if using html in detect_language.</script><p>plus ça change, plus c'est la même chose</p></body></html>", false) }
@@ -45,7 +53,7 @@ describe CLD do
     subject { CLD.detect_language("你好嗎繁體") }
 
     it { subject[:name].should eq("ChineseT") } 
-    it { subject[:code].should eq("zh-TW") }
+    it { subject[:code].should eq("zh-Hant") }
   end
 
   context "Unknown text" do
@@ -53,7 +61,7 @@ describe CLD do
 
     it { subject[:name].should eq("Unknown") }
     it { subject[:code].should eq("un") }
-    it { subject[:reliable].should be_true }
+    it { subject[:reliable].should_not be_true }
   end
 
   context "nil for text" do
@@ -61,7 +69,7 @@ describe CLD do
 
     it { subject[:name].should eq("Unknown") }
     it { subject[:code].should eq("un") }
-    it { subject[:reliable].should be_true }
+    it { subject[:reliable].should_not be_true }
   end
 
 end

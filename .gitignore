@@ -18,3 +18,8 @@ tmp
 ext/cld/*.o
 ext/cld/*.a
 ext/cld/*.so
+CMakeCache.txt
+CMakeFiles
+*.cmake
+Makefile
+ext/cld/lib
