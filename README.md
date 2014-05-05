@@ -1,7 +1,7 @@
-# Compact Language Detection
+# Compact Language Detection 2.0
 
-Blazing-fast language detection for Ruby provided by
-Google Chrome's Compact Language Detector.
+Based on Jason Toy's CLD v1.0.
+Blazing-fast language detection for Ruby provided by Google Chrome's Compact Language Detector v2.0
 
 ## How to Use
 
@@ -30,5 +30,6 @@ $ bundle
 ## Thanks
 
 Thanks to the Chrome authors, and to Mike McCandless for writing a Python version.
+Thanks to Jason Toy for the original cld v1.0 ruby port.
 
-Licensed the same as Chrome.  Jason Toy
+Licensed the same as Chrome.
