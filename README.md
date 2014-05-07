@@ -1,3 +1,5 @@
+![image](https://circleci.com/gh/BanjoInc/cld2.png?circle-token=6e9c5831521447a5005be3f4d33a221e9d2ae1d4)
+
 # Compact Language Detection 2.0
 
 Based on Jason Toy's CLD v1.0.
