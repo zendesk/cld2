@@ -18,7 +18,7 @@ CLD.detect_language("plus ça change, plus c'est la même chose")
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "cld2"
+gem 'cld2', require 'cld'
 ```
 
 And then execute:
