@@ -27,7 +27,9 @@ $objs = ["internal/cldutil.o",
   "internal/cld_generated_score_quad_octa_0122_2.o",
   "thunk.o"]
 
-create_makefile('libcld2')
+if have_library('stdc++')
+  create_makefile('libcld2')
+end
 
 # to clean up object files under internal subdirectory.
 open('Makefile', 'a') do |f|
