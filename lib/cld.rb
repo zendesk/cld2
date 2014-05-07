@@ -3,7 +3,15 @@ require "ffi"
 
 module CLD
   extend FFI::Library
-  ffi_lib "#{File.expand_path("../../", __FILE__)}/ext/cld/lib/libcld2.so"
+
+  # Workaround FFI dylib/bundle issue.  See https://github.com/ffi/ffi/issues/42
+  suffix = if FFI::Platform.mac?
+    'bundle'
+  else
+    FFI::Platform::LIBSUFFIX
+  end
+
+  ffi_lib File.join(File.expand_path(File.dirname(__FILE__)), '..', 'ext', 'cld', 'libcld2.' + suffix)
 
   def self.detect_language(text, is_plain_text=true)
     result = detect_language_ext(text.to_s, is_plain_text)
