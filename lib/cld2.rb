@@ -1,7 +1,7 @@
-require "cld/version"
+require "cld2/version"
 require "ffi"
 
-module CLD
+module CLD2
   extend FFI::Library
 
   # Workaround FFI dylib/bundle issue.  See https://github.com/ffi/ffi/issues/42
@@ -11,7 +11,7 @@ module CLD
     FFI::Platform::LIBSUFFIX
   end
 
-  ffi_lib File.join(File.expand_path(File.dirname(__FILE__)), '..', 'ext', 'cld', 'libcld2.' + suffix)
+  ffi_lib File.join(File.expand_path(File.dirname(__FILE__)), '..', 'ext', 'cld2', 'libcld2.' + suffix)
 
   def self.detect_language(text, is_plain_text=true)
     result = detect_language_ext(text.to_s, is_plain_text)
@@ -23,6 +23,6 @@ module CLD
   class ReturnValue < FFI::Struct
     layout :name, :string, :code, :string, :reliable, :bool
   end
-  
+
   attach_function "detect_language_ext", "detectLanguageThunkInt", [:buffer_in, :bool], ReturnValue.by_value
 end
